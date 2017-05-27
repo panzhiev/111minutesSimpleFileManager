@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.panzhiev.a111minutessimplefilemanager.MainActivity">
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.example.panzhiev.a111minutessimplefilemanager.ui.activities.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/et_file_name"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_marginBottom="10dp"
+        android:hint="@string/enter_file_name"/>
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/btn_save_file"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/btn_save_file"/>
+
+    <Button
+        android:id="@+id/btn_open_directory"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_open_directory"/>
+
+</LinearLayout>

@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">111minutesSimpleFileManager</string>
+    <string name="app_name">File Manager</string>
+    <string name="enter_file_name">Enter File Name</string>
+    <string name="enter_file_content">Enter File Content</string>
+    <string name="btn_save_file">SAVE FILE</string>
+    <string name="btn_open_directory">Open Directory</string>
 </resources>
