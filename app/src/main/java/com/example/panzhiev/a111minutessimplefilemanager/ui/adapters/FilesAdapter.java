@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.panzhiev.a111minutessimplefilemanager.R;
 import com.example.panzhiev.a111minutessimplefilemanager.ui.activities.FileContentActivity;
-import com.example.panzhiev.a111minutessimplefilemanager.utils.FileManager;
+import com.example.panzhiev.a111minutessimplefilemanager.utils.SharedPrefsHelper;
 
 import java.io.File;
 import java.util.List;
@@ -26,6 +26,7 @@ public class FilesAdapter extends BaseAdapter {
     Context mContext;
     List<File> list;
     LayoutInflater inflater;
+    private final String FILES_ADAPTER_LOG = "MainActivity";
 
     public FilesAdapter(Context mContext, List<File> list) {
         this.mContext = mContext;
@@ -47,8 +48,12 @@ public class FilesAdapter extends BaseAdapter {
         cardViewFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FileManager.selectFileName = file.getName();
-                Log.d("RET", file.getName());
+
+                String fileName = file.getName();
+                SharedPrefsHelper sharedPrefsHelper = new SharedPrefsHelper();
+                sharedPrefsHelper.putStringValue(mContext,"filename", fileName);
+
+                Log.d(FILES_ADAPTER_LOG, file.getName());
                 Intent intent = new Intent(mContext, FileContentActivity.class);
                 mContext.startActivity(intent);
             }

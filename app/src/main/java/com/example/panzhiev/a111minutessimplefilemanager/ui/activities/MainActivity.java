@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.example.panzhiev.a111minutessimplefilemanager.R;
 import com.example.panzhiev.a111minutessimplefilemanager.utils.FileManager;
+import com.example.panzhiev.a111minutessimplefilemanager.utils.SharedPrefsHelper;
 
 /**
  * Created by Tim on 27.05.2017.
@@ -18,11 +19,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     EditText etFileName;
     Button btnSaveFile, btnOpenDirectory;
+    SharedPrefsHelper sharedPrefsHelper;
     private final String MAIN_ACTIVITY_LOG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPrefsHelper = new SharedPrefsHelper();
+        sharedPrefsHelper.firstRunChecking(this);
         setContentView(R.layout.activity_main);
         init();
     }

@@ -17,7 +17,6 @@ import java.io.IOException;
 
 public class FileManager implements IFileManager{
 
-    public static String selectFileName;
     private final String FILE_MANAGER_LOG = "FileManager";
 
     //checking is ExternalStorage readable
