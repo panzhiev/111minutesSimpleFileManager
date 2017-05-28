@@ -3,6 +3,7 @@ package com.example.panzhiev.a111minutessimplefilemanager.ui.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,14 +20,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     EditText etFileName;
     Button btnSaveFile, btnOpenDirectory;
-    SharedPrefsHelper sharedPrefsHelper;
     private final String MAIN_ACTIVITY_LOG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sharedPrefsHelper = new SharedPrefsHelper();
+
+        //check app for first run
+        Log.d(MAIN_ACTIVITY_LOG, "Checking for first run is started..");
+        SharedPrefsHelper sharedPrefsHelper = new SharedPrefsHelper();
         sharedPrefsHelper.firstRunChecking(this);
+
         setContentView(R.layout.activity_main);
         init();
     }
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_save_file:
                 FileManager fileManager = new FileManager();
                 if (fileManager.isExternalStorageReadable()) {
+                    Log.d(MAIN_ACTIVITY_LOG, "Storage is readable");
                     fileManager.saveFileToExternalStorage(etFileName.getText().toString());
                 }
                 etFileName.setText("");
@@ -47,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    //variables initializing
     private void init()
     {
         etFileName = (EditText) findViewById(R.id.et_file_name);

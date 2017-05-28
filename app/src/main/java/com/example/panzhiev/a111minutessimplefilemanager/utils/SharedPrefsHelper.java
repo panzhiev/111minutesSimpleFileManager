@@ -18,11 +18,11 @@ public class SharedPrefsHelper {
 
     SharedPreferences prefs = null;
 
+    //check app for first run
     public void firstRunChecking(Context context) {
 
         prefs = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         if (prefs.getBoolean("firstrun", true)) {
-
             prefs.edit().putBoolean("firstrun", false).apply();
         } else {
             Intent intent = new Intent(context, FileContentActivity.class);
@@ -31,14 +31,13 @@ public class SharedPrefsHelper {
     }
 
     public void putStringValue(Context context, String key, String value) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(key, value);
+        prefs = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit().putString(key, value);
         editor.apply();
     }
 
     public String getStringValue(Context context, String key){
-        SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        return sharedPreferences.getString(key, null);
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        return prefs.getString(key, null);
     }
 }

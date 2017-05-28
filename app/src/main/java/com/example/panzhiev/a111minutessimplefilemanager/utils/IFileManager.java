@@ -16,10 +16,9 @@ public interface IFileManager {
 
     void writeFile(String fileName, String fileContent);
 
+    String readFile(String fileName);
+
     File[] getDirectoryContent(String path);
 
     String getPath();
-
-    String readFile(String fileName);
-
 }

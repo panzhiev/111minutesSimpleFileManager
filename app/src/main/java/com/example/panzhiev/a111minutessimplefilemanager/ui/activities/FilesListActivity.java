@@ -19,7 +19,6 @@ import java.util.List;
 public class FilesListActivity extends AppCompatActivity {
 
     ListView listView;
-    List<File> filesList;
     FilesAdapter mFilesAdapter;
     private final String FILES_LIST_ACTIVITY_LOG = "FilesListActivity";
 
@@ -30,9 +29,11 @@ public class FilesListActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.list_view);
 
+        //Create list of files from current folder
         FileManager fileManager = new FileManager();
-        filesList = Arrays.asList(fileManager.getDirectoryContent(fileManager.getPath()));
+        List<File> filesList = Arrays.asList(fileManager.getDirectoryContent(fileManager.getPath()));
 
+        //setting data in listview
         mFilesAdapter = new FilesAdapter(this, filesList);
         listView.setAdapter(mFilesAdapter);
     }

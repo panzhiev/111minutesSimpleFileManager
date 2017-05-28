@@ -12,6 +12,10 @@ import com.example.panzhiev.a111minutessimplefilemanager.R;
 import com.example.panzhiev.a111minutessimplefilemanager.utils.FileManager;
 import com.example.panzhiev.a111minutessimplefilemanager.utils.SharedPrefsHelper;
 
+/**
+ * Created by Tim on 27.05.2017.
+ */
+
 public class FileContentActivity extends AppCompatActivity {
 
     EditText etFileContent;
@@ -27,11 +31,11 @@ public class FileContentActivity extends AppCompatActivity {
         init();
         final FileManager fileManager = new FileManager();
 
+        //getting the last used file`s name from the SharedPreferences
         SharedPrefsHelper sharedPrefsHelper = new SharedPrefsHelper();
         final String fileName = sharedPrefsHelper.getStringValue(this, "filename");
 
         etFileContent.setText(fileManager.readFile(fileName));
-
         tvFileContent.setText(fileManager.openFile(fileName));
         btnSaveFile.setOnClickListener(new View.OnClickListener() {
             @Override
