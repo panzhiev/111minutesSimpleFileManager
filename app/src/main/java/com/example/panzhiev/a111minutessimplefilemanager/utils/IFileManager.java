@@ -12,8 +12,6 @@ public interface IFileManager {
 
     void saveFileToExternalStorage(String fileName);
 
-    String openFile(String fileName);
-
     void writeFile(String fileName, String fileContent);
 
     String readFile(String fileName);
