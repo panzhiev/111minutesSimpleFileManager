@@ -37,7 +37,7 @@ public class FilesAdapter extends BaseAdapter {
     @Override
     public View getView(final int i, View convertView, ViewGroup viewGroup) {
         View view = convertView;
-        if (view == null){
+        if (view == null) {
             view = inflater.inflate(R.layout.item_file, viewGroup, false);
         }
         final File file = (File) getItem(i);
@@ -51,7 +51,7 @@ public class FilesAdapter extends BaseAdapter {
 
                 String fileName = file.getName();
                 SharedPrefsHelper sharedPrefsHelper = new SharedPrefsHelper();
-                sharedPrefsHelper.putStringValue(mContext,"filename", fileName);
+                sharedPrefsHelper.putStringValue(mContext, "filename", fileName);
 
                 Log.d(FILES_ADAPTER_LOG, file.getName());
                 Intent intent = new Intent(mContext, FileContentActivity.class);

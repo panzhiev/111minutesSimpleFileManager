@@ -2,13 +2,16 @@ package com.example.panzhiev.a111minutessimplefilemanager.ui.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.panzhiev.a111minutessimplefilemanager.R;
 import com.example.panzhiev.a111minutessimplefilemanager.ui.adapters.FilesAdapter;
 import com.example.panzhiev.a111minutessimplefilemanager.utils.FileManager;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,7 +21,9 @@ import java.util.List;
 
 public class FilesListActivity extends AppCompatActivity {
 
-    ListView listView;
+    ListView mListView;
+    TextView mTextView;
+    List<File> filesList;
     FilesAdapter mFilesAdapter;
     private final String FILES_LIST_ACTIVITY_LOG = "FilesListActivity";
 
@@ -27,14 +32,23 @@ public class FilesListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_files_list);
 
-        listView = (ListView) findViewById(R.id.list_view);
+        mListView = (ListView) findViewById(R.id.list_view);
+        mTextView = (TextView) findViewById(R.id.tv_empty);
 
         //Create list of files from current folder
         FileManager fileManager = new FileManager();
-        List<File> filesList = Arrays.asList(fileManager.getDirectoryContent(fileManager.getPath()));
+        try {
+            filesList = Arrays.asList(fileManager.getDirectoryContent(fileManager.getPath()));
+            mTextView.setVisibility(View.INVISIBLE);
+        } catch (NullPointerException npe){
+
+            //if path is not exist
+            mTextView.setVisibility(View.VISIBLE);
+            filesList = new ArrayList<>();
+        }
 
         //setting data in listview
         mFilesAdapter = new FilesAdapter(this, filesList);
-        listView.setAdapter(mFilesAdapter);
+        mListView.setAdapter(mFilesAdapter);
     }
 }

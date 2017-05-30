@@ -4,4 +4,5 @@
     <string name="enter_file_content">Enter File Content</string>
     <string name="btn_save_file">SAVE FILE</string>
     <string name="btn_open_directory">Open Directory</string>
+    <string name="folder_is_empty">Folder is empty..</string>
 </resources>

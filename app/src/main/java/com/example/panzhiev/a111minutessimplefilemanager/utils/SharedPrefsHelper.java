@@ -24,7 +24,7 @@ public class SharedPrefsHelper {
         prefs = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         if (prefs.getBoolean("firstrun", true)) {
             prefs.edit().putBoolean("firstrun", false).apply();
-        } else {
+        } else if (prefs.contains("filename")){
             Intent intent = new Intent(context, FileContentActivity.class);
             context.startActivity(intent);
         }
@@ -38,6 +38,6 @@ public class SharedPrefsHelper {
 
     public String getStringValue(Context context, String key){
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        return prefs.getString(key, null);
+        return prefs.getString(key, "not exist");
     }
 }
