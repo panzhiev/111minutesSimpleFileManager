@@ -6,6 +6,7 @@ import android.util.Log;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -49,6 +50,26 @@ public class FileManager implements IFileManager{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    //file opening
+    @Override
+    public String openFile(String fileName) {
+        String openStr = "";
+        File file = new File(getPath(), fileName);
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            int c;
+            while ((c = bufferedReader.read()) != -1) {
+                openStr += (char) c;
+            }
+            bufferedReader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return openStr;
     }
 
     //writing data into the file
@@ -96,6 +117,10 @@ public class FileManager implements IFileManager{
             e.printStackTrace();
         }
         String fileContent = stringBuilder.toString();
-        return fileContent.substring(0,fileContent.length()-1);
+        if (fileContent.equals("")) {
+            return fileContent;
+        } else {
+            return fileContent.substring(0,fileContent.length()-1);
+        }
     }
 }

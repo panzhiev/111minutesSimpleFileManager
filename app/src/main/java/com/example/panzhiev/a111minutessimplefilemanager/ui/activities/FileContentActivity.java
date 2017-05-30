@@ -36,7 +36,7 @@ public class FileContentActivity extends AppCompatActivity {
         final String fileName = sharedPrefsHelper.getStringValue(this, "filename");
 
         etFileContent.setText(fileManager.readFile(fileName));
-        tvFileContent.setText(fileManager.readFile(fileName));
+        tvFileContent.setText(fileManager.openFile(fileName));
         btnSaveFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,7 +45,7 @@ public class FileContentActivity extends AppCompatActivity {
                 fileManager.writeFile(fileName, fileContent);
                 Log.d(FILE_CONTENT_ACTIVITY_LOG, "File was overwrite successfully");
 
-                tvFileContent.setText(fileManager.readFile(fileName));
+                tvFileContent.setText(fileManager.openFile(fileName));
                 Log.d(FILE_CONTENT_ACTIVITY_LOG, "File Content added successfully");
             }
         });
