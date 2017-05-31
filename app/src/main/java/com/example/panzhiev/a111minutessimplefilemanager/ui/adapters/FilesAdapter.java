@@ -26,7 +26,7 @@ public class FilesAdapter extends BaseAdapter {
     Context mContext;
     List<File> list;
     LayoutInflater inflater;
-    private final String FILES_ADAPTER_LOG = "MainActivity";
+    private final String FILES_ADAPTER_LOG = "FilesAdapter";
 
     public FilesAdapter(Context mContext, List<File> list) {
         this.mContext = mContext;
